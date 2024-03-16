@@ -33,34 +33,59 @@ namespace SnakeAndLadderGame
 
 
                 position = position + roll;
-                decidingtheStatus();
+                // it will call the function to decide noplay, snale , ladder 
+                if (!(position >= 94))
+                {
+                    position = decidingtheStatus(position);
 
+                }
                 if (position == 100)
                 {
                     gameStatus = false;
                 }
-               
+                // this will ensure that position will not go above 100
+                if (position > 100)
+                {
+                    position = position - roll;
+                }
+
             }
         }
-        public int decidingtheStatus()
+        public int decidingtheStatus(int position)
         {
 
             Random r = new Random();
             int status = r.Next(0, 3);
             int change = 0;
-            if (status == 0){
-                return change;
+            if (status == 0)
+            {
+                return position - change;
             }
             else if (status == 1)
             {
-                return snakeLength();
+                if (position <= 95)
+                {
+                    return position - snakeLength();
+                }
+
+                else
+                {
+                    return position;
+                }
             }
             else
             {
-                return ladderLength();
-            }
+                if (position <= 64)
+                {
 
-           
+                    return position + ladderLength();
+
+
+                }
+                else return position;
+
+
+            }
         }
 
         public int snakeLength()
