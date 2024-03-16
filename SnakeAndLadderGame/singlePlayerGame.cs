@@ -27,6 +27,7 @@ namespace SnakeAndLadderGame
 
             int position = 0;
             int positionStatus = 0;
+            int numberOfTimesDieRolled = 0;
             Boolean gameStatus = true;
             while (gameStatus)
             {
@@ -42,7 +43,7 @@ namespace SnakeAndLadderGame
                 //it will ensure that player win only when position is 100
                 if (position == 100)
                 {
-                    Console.WriteLine($"{this.name}win the game ");
+                    Console.WriteLine($"{this.name}  win the game ");
                     gameStatus = false;
                     break;
                 }
@@ -51,8 +52,11 @@ namespace SnakeAndLadderGame
                 {
                     position = position - roll;
                 }
+                // this will count the number of times dice is rolled 
+                numberOfTimesDieRolled++;
 
             }
+            Console.WriteLine($"the number of time die rolled is {numberOfTimesDieRolled}");
         }
         public int decidingtheStatus(int position)
         {
